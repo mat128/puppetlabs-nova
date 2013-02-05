@@ -1,4 +1,5 @@
 class nova::compute::libvirt (
+  $compute_driver    = 'libvirt.LibvirtDriver',
   $libvirt_type      = 'kvm',
   $vncserver_listen  = '127.0.0.1',
   $migration_support = false
@@ -36,7 +37,7 @@ class nova::compute::libvirt (
   }
 
   nova_config {
-    'compute_driver':   value => 'libvirt.LibvirtDriver';
+    'compute_driver':   value => $compute_driver;
     'libvirt_type':     value => $libvirt_type;
     'connection_type':  value => 'libvirt';
     'vncserver_listen': value => $vncserver_listen;
